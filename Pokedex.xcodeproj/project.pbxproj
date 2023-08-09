@@ -57,9 +57,9 @@
 			children = (
 				4A8E9C892A82F46500F8463E /* PokedexApp.swift */,
 				4A8E9C8B2A82F46500F8463E /* ContentView.swift */,
-				4A8E9C8D2A82F46600F8463E /* Assets.xcassets */,
 				4A8E9C922A82F46600F8463E /* Persistence.swift */,
 				4A8E9C942A82F46600F8463E /* Pokedex.xcdatamodeld */,
+				4A8E9C8D2A82F46600F8463E /* Assets.xcassets */,
 				4A8E9C8F2A82F46600F8463E /* Preview Content */,
 			);
 			path = Pokedex;
