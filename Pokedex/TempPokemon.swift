@@ -10,7 +10,7 @@ import Foundation
 struct TempPokemon: Codable{
     let id: Int
     let name: String
-    let type: [String]
+    let types: [String]
     var hp: Int = 0
     var attack: Int = 0
     var defense: Int = 0
@@ -71,7 +71,7 @@ struct TempPokemon: Codable{
             
             
         }
-        type = decodedTypes
+        types = decodedTypes
         
         var statsContainer = try container.nestedUnkeyedContainer(forKey: .stats)
         
