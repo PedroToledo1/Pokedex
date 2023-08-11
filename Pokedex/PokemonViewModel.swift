@@ -22,8 +22,10 @@ class PokemonViewModel: ObservableObject {
     
     init(controller: FetchController){
         self.controller = controller
+        Task {
+            await getPokemon()
+        }
     }
-    
     func getPokemon() async {
         status = .fetching
         

@@ -16,7 +16,7 @@ struct FetchController {
     func fetchAllPokemon() async throws -> [TempPokemon]{
         var allPokemon: [TempPokemon] = []
         var fetchComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
-        fetchComponents?.queryItems = [URLQueryItem(name: "limit", value: "1281")]
+        fetchComponents?.queryItems = [URLQueryItem(name: "limit", value: "386")]
         guard let fetchURL = fetchComponents?.url else {
             throw NetworkError.badURL
         }
