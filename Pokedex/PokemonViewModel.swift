@@ -31,9 +31,8 @@ class PokemonViewModel: ObservableObject {
         
         do{
             var pokedex = try await controller.fetchAllPokemon()
-            pokedex.sort{
-                $0.id < $1.id
-            }
+            pokedex.sort{$0.id < $1.id}
+            
             for pokemon in pokedex {
                 let newPokemon = Pokemon(context: PersistenceController.shared.container.viewContext)
                 newPokemon.id = Int16(pokemon.id)
@@ -48,6 +47,7 @@ class PokemonViewModel: ObservableObject {
                 newPokemon.sprite = pokemon.sprite
                 newPokemon.shiny = pokemon.shiny
                 newPokemon.favorite = false
+                
                 try PersistenceController.shared.container.viewContext.save()
             }
             status = .success
