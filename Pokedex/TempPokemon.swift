@@ -30,9 +30,6 @@ struct TempPokemon: Codable{
         
         enum TypeDictionaryKeys: String, CodingKey {
             case type
-            
-            
-            
             enum typeKeys: String, CodingKey {
                 case name
             }
@@ -41,7 +38,6 @@ struct TempPokemon: Codable{
         enum StatsDictionaryKeys: String, CodingKey {
             case stat
             case value = "base_stat"
-            
             
             enum statKeys: String, CodingKey {
                 case name
@@ -58,8 +54,6 @@ struct TempPokemon: Codable{
         name = try container.decode(String.self, forKey: .name)
         
         var decodedTypes: [String] = []
-        
-        
         var typeContainer = try container.nestedUnkeyedContainer(forKey:  .types)
         
         while !typeContainer.isAtEnd {
@@ -67,9 +61,7 @@ struct TempPokemon: Codable{
             let typeContainer = try typesDictionaryContainer.nestedContainer(keyedBy: PokemonKeys.TypeDictionaryKeys.typeKeys.self, forKey: .type)
             
             let type = try typeContainer.decode(String.self, forKey: .name)
-            decodedTypes.append(type)
-            
-            
+            decodedTypes.append(type)  
         }
         types = decodedTypes
         
@@ -88,7 +80,6 @@ struct TempPokemon: Codable{
                 defense = try statsDictionaryContainer.decode(Int.self, forKey: .value)
             case "special-attack":
                 specialAttack = try statsDictionaryContainer.decode(Int.self, forKey: .value)
-                
             case "special-defense":
                 specialDefense = try statsDictionaryContainer.decode(Int.self, forKey: .value)
             case "speed":
