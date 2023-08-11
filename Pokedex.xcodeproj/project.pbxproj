@@ -50,6 +50,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A1104172A86AC82002CE3F5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4A8E9C8B2A82F46500F8463E /* ContentView.swift */,
+				4A11040F2A8563C6002CE3F5 /* PokemonDetail.swift */,
+				4A1104152A85AC12002CE3F5 /* StatsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		4A8E9C7D2A82F46500F8463E = {
 			isa = PBXGroup;
 			children = (
@@ -70,12 +80,10 @@
 			isa = PBXGroup;
 			children = (
 				4A8E9C892A82F46500F8463E /* PokedexApp.swift */,
-				4A8E9C8B2A82F46500F8463E /* ContentView.swift */,
+				4A1104172A86AC82002CE3F5 /* Views */,
 				4A74E05A2A840D150052543A /* TempPokemon.swift */,
 				4A11040B2A8545E2002CE3F5 /* FetchController.swift */,
 				4A11040D2A854DE1002CE3F5 /* PokemonViewModel.swift */,
-				4A11040F2A8563C6002CE3F5 /* PokemonDetail.swift */,
-				4A1104152A85AC12002CE3F5 /* StatsView.swift */,
 				4A1104112A8564D3002CE3F5 /* SamplePokemon.swift */,
 				4A8E9C922A82F46600F8463E /* Persistence.swift */,
 				4A1104132A859B58002CE3F5 /* Pokemon+Ext.swift */,
