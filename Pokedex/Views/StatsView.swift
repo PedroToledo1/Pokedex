@@ -10,6 +10,7 @@ import Charts
 
 struct StatsView: View {
     @EnvironmentObject var pokemon: Pokemon
+    
     var body: some View {
         Chart(pokemon.stats){ stat in
             BarMark(x: .value("Value", stat.value), y: .value("Stat", stat.label))
