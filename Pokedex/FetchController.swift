@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 struct FetchController {
     enum NetworkError: Error {
@@ -13,7 +14,11 @@ struct FetchController {
     }
     private let baseURL = URL(string: "https://pokeapi.co/api/v2/pokemon/")!
     
-    func fetchAllPokemon() async throws -> [TempPokemon]{
+    func fetchAllPokemon() async throws -> [TempPokemon]?{
+        
+        if havePokemon() {
+            return nil
+        }
         var allPokemon: [TempPokemon] = []
         var fetchComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
         fetchComponents?.queryItems = [URLQueryItem(name: "limit", value: "386")]
