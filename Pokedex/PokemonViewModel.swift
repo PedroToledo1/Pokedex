@@ -61,22 +61,4 @@ class PokemonViewModel: ObservableObject {
             status = .failed(error: error)
         }
     }
-    
-    private func havePokemon() -> Bool {
-        let context = PersistenceController.shared.container.newBackgroundContext()
-        let fetchRequest: NSFetchRequest<Pokemon> = Pokemon.fetchRequest()
-        
-        fetchRequest.predicate = NSPredicate(format: "id IN %@", [1, 386])
-        
-        do{
-            let checkPokemon = try context.fetch(fetchRequest)
-            if checkPokemon.count == 2{
-                return true
-            }
-        }catch{
-            print("Fetch failed: \(error)")
-            return false
-        }
-        return false
-    }
 }
