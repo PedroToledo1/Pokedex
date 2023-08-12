@@ -9,20 +9,28 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
+    
 
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Pokemon.id, ascending: true)],
-        animation: .default)
+        animation: .default
+    ) private var pokedex: FetchedResults<Pokemon>
     
-    private var pokedex: FetchedResults<Pokemon>
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Pokemon.id, ascending: true)],
+        predicate: NSPredicate(format: "favorite = %d", true),
+        animation: .default
+    ) private var favorite: FetchedResults<Pokemon>
+    
     @StateObject private var pokemonVM = PokemonViewModel(controller: FetchController())
+    @State var filterByFavorites = false
+    
     var body: some View {
     
-        switch pokemonVM.status {
+    switch pokemonVM.status {
         case .success:
             NavigationStack {
-                List (pokedex){ pokemon in
+                List (filterByFavorites ? favorite : pokedex){ pokemon in
                     NavigationLink(value: pokemon) {
                         AsyncImage(url: pokemon.sprite){ image in
                             image
@@ -33,6 +41,10 @@ struct ContentView: View {
                         }
                         .frame(width: 90, height: 90)
                         Text((pokemon.name!.capitalized))
+                        if pokemon.favorite{
+                            Image(systemName: "star.fill")
+                                .foregroundColor(.yellow)
+                        }
                     }
                 }
                 .navigationTitle("Pokedex")
@@ -42,14 +54,19 @@ struct ContentView: View {
                 })
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        EditButton()
+                        Button (action: {
+                                filterByFavorites.toggle()
+                        }, label: {
+                            Label("Favorites By Filter", systemImage: (filterByFavorites ? "star.fill" : "star"))
+                                .foregroundColor(.yellow)
+                        })
                     }
                 }
             }
-        default:
+      default:
             ProgressView()
         }
-    }
+     }
 }
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
