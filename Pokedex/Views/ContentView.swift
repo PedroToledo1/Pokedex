@@ -27,8 +27,8 @@ struct ContentView: View {
     
     var body: some View {
     
-    switch pokemonVM.status {
-        case .success:
+   switch pokemonVM.status {
+       case .success:
             NavigationStack {
                 List (filterByFavorites ? favorite : pokedex){ pokemon in
                     NavigationLink(value: pokemon) {
@@ -41,6 +41,7 @@ struct ContentView: View {
                         }
                         .frame(width: 90, height: 90)
                         Text((pokemon.name!.capitalized))
+                        
                         if pokemon.favorite{
                             Image(systemName: "star.fill")
                                 .foregroundColor(.yellow)
@@ -64,8 +65,8 @@ struct ContentView: View {
                 }
             }
       default:
-            ProgressView()
-        }
+           ProgressView()
+       }
      }
 }
 struct ContentView_Previews: PreviewProvider {
