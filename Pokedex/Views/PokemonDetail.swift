@@ -12,6 +12,7 @@ struct PokemonDetail: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var pokemon: Pokemon
     @State var showShiny = false
+    
     var body: some View {
         ScrollView{
             ZStack{
