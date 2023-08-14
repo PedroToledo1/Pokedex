@@ -34,6 +34,19 @@ struct WidgetPokemon: View {
                 }
             case .large:
                 FetchImage(url: pokemon.sprite)
+                VStack{
+                    HStack{
+                        Text(pokemon.name!.capitalized)
+                            .font(.title)
+                        Spacer()
+                    }
+                    Spacer()
+                    HStack{
+                        Spacer()
+                        Text(pokemon.types!.joined(separator: ", ").capitalized)
+                    }
+                }
+                .padding()
             }
         }
     }
